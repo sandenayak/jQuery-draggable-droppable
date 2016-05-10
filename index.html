@@ -1,0 +1,174 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+	<title>Combined Order</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"/>
+
+
+	<style type="text/css">
+		.table-container{
+			border: 1px solid grey;
+		}
+		.customSizeCol{
+			width: 5%;
+		}
+		.pLeft0{
+			padding-left: 0;
+		}
+
+		.pRight0{
+			padding-right: 0;
+		}
+		.rightText{
+			text-align: right;
+		}
+		.mTop25{
+			margin-top: 25px;
+		}
+
+		table tbody td{
+			padding:5px 0;
+		}
+
+		i{
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">			
+			<p class="col-lg-12">Create Combination Order</p>				
+		</div>
+		<div id="table-top-container" class="row table-container">
+			<div class="col-lg-12">
+				<div class="row">
+					<p class="col-lg-12">Your Combination Order</p>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<table id="table-top">
+							<thead>
+								<th class="col-lg-1">STOP</th>
+								<th class="col-lg-2">ORDER DATE</th>
+								<th class="col-lg-1">ORDER#</th>
+								<th class="col-lg-1">PO#</th>
+								<th class="col-lg-2">LOAD DATE</th>
+								<th class="col-lg-2">SHIP-TO LOCATION</th>
+								<th class="col-lg-1 rightText">WEIGHT</th>
+								<th class="col-lg-1 rightText">VOLUME</th>
+								<th class="col-lg-1"></th>
+							</thead>
+							<tbody class="table-top-body">
+								
+							</tbody>
+						</table>
+					</div>						
+				</div>
+				<div class="row mTop25">
+					
+							<div class="col-lg-6">
+								<p class="pull-right">Combo order load date: 02-02-2016</p>
+							</div>
+							<div class="col-lg-3 pLeft0 pRight0">
+								
+								<div class="pull-right">TOTALS: </div>
+							</div>
+							<div class="col-lg-1 pLeft0 pRight0">
+								
+								<div class="pull-right">23,542 kg </div>
+							</div>
+							<div class="col-lg-1">
+								<p class="pull-right">27,123 gal</p>
+							</div>
+						
+				</div>
+				<div class="row">
+				
+							<div class="col-lg-offset-6 col-lg-3 pLeft0 pRight0">
+								<p class="pull-right">Full truck load:</p>
+							</div>
+							<div class="col-lg-offset-1 col-lg-1">
+								
+								<div class="pull-right">23,542 gal </div>
+							</div>
+				</div>
+				<div class="row">
+				
+							<div class="col-lg-offset-6 col-lg-3 pLeft0 pRight0">
+								<p class="pull-right">Max truck weight:</p>
+							</div>
+							<div class="col-lg-1 pLeft0 pRight0">
+								
+								<div class="pull-right">23,542 kg </div>
+							</div>
+				</div>
+				<div class="row">
+					<button class="col-lg-offset-9 col-lg-2  create-combo-btn">Create Combo Order</button>
+				</div>
+			</div>
+		</div>
+		<div id="table-bottom-container" class="row table-container">
+			<div class="col-lg-12">
+				<div class="row">
+					<p class="col-lg-12">Your Orders That Can Be Combined</p>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<table id="table-bottom">
+							<thead>
+								<th class="col-lg-1"></th>
+								<th class="col-lg-2">ORDER DATE</th>
+								<th class="col-lg-1">ORDER#</th>
+								<th class="col-lg-1">PO#</th>
+								<th class="col-lg-2">LOAD DATE</th>
+								<th class="col-lg-2">SHIP-TO LOCATION</th>
+								<th class="col-lg-1 rightText">WEIGHT</th>
+								<th class="col-lg-1 rightText">VOLUME</th>
+								<th class="col-lg-1"></th>
+							</thead>
+							<tbody class="table-bottom-body">
+								
+							</tbody>
+						</table>
+					</div>						
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/x-jquery-tmpl" id="table-top-template">
+		<tr class="top-tr">
+			<td class="col-lg-1"></td>
+			<td class="col-lg-2">${orderDate}</td>
+			<td class="col-lg-1">${orderNumber}</td>
+			<td class="col-lg-1">${poNumber}</td>
+			<td class="col-lg-2">${loadDate}</td>
+			<td class="col-lg-2">${shipToLocation}</td>
+			<td class="col-lg-1 rightText">${weight}</td>
+			<td class="col-lg-1 rightText">${volume}</td>
+			<td class="col-lg-1"><i class="fa fa-minus-circle js-remove-row" aria-hidden="true"></i></td>
+		</tr>
+	</script>
+	<script type="text/x-jquery-tmpl" id="table-bottom-template">
+		<tr>
+			<td class="col-lg-1"></td>
+			<td class="col-lg-2">${orderDate}</td>
+			<td class="col-lg-1">${orderNumber}</td>
+			<td class="col-lg-1">${poNumber}</td>
+			<td class="col-lg-2">${loadDate}</td>
+			<td class="col-lg-2">${shipToLocation}</td>
+			<td class="col-lg-1 rightText">${weight}</td>
+			<td class="col-lg-1 rightText">${volume}</td>
+			<td class="col-lg-1"><i class="fa fa-plus-circle js-add-row" aria-hidden="true"></i></td>
+		</tr>
+	</script>
+</html>
